@@ -1,0 +1,25 @@
+.layout{
+  display:flex;
+}
+.sidebar{
+  width:240px;
+  background-color:#1c2940;
+  border-radius:20px;
+  padding:30px;
+  display:flex;
+  flex-direction:column;
+  color:#89c3eb;
+}
+.content{
+  flex:1;
+}
+
+.sidebarButton{
+  background-color: #101827;
+  color:#89c3eb;
+  border-radius:8px;
+  font-size:20px;
+  text-align:left;
+  margin-bottom:15px;
+  padding:8px;
+}

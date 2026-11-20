@@ -1,0 +1,279 @@
+/*ページ全体*/
+.task-page{
+  width:100%;
+  max-width:1000px;
+  margin:0 auto;
+  box-sizing:border-box;
+}
+/*今日のタスク・追加*/
+.task-header{
+  display:flex;
+  justify-content:space-between;  /*子要素を左右の端に配置する指定*/
+  align-items:center;
+  margin-top:20px;
+}
+/*ヘッダーの追加ボタン*/
+.task-header button{
+  background-color:aqua;
+  width:70px;
+  height:35px;
+  border-radius:19px;
+  color:black;
+}
+/*完了したタスク*/
+.task-row button.completed{
+  color: #cbd5e1;
+  background-color: #344052;
+}
+/*チェックマーク*/
+.task-check{
+  color:#4ade80;
+  font-size:17px;
+  font-weight:bold;
+  margin-right:10px;
+}
+/*未完了のタスク*/
+.incomplete{
+  color: black;
+}
+
+/*難易度別の色など*/
+.difficulty-1 {
+  background-color: #7fbfff;
+}
+.difficulty-2 {
+  background-color: #7fffbf;
+}
+.difficulty-3 {
+  background-color: #ffff8e;
+}
+.difficulty-4 {
+  background-color: #ffbf7f;
+}
+.difficulty-5 {
+  background-color: #c489ff;
+}
+
+/*追加と編集のモーダル*/
+.edit-modal,
+.add-modal {
+  width: 400px;
+  max-width: 90%;
+  padding: 24px;
+  background-color: rgba(28, 41, 64, 0.9);
+  border: 3px solid aqua;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(168, 85, 247, 0.3);
+  box-sizing:border-box;
+  max-height:90vh;
+  overflow-y:auto;
+}
+/*入力と追加ボタン*/
+.task-form-bottom{
+  display:flex;
+  gap:10px;
+  height:30px;
+  margin-top:10px;
+}
+/*入力*/
+.task-form input{
+  background-color: #101827;
+  color:white;
+  width:100%;
+  height:35px;
+  box-sizing:border-box;
+  border-radius:8px;
+}
+/*追加*/
+.task-form-bottom button{
+  background-color:aqua;
+  width:70px;
+  border-radius:20px;
+  color:black;
+}
+/*難易度*/
+.task-form-bottom select{
+  background-color: #101827;
+  color:white;
+  border-radius:8px;
+  border:#101827;
+  flex:1;
+}
+
+/*タスク一覧*/
+.task-list{
+  display:flex;
+  flex-direction:column;
+  gap:0;
+}
+.task-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px;
+  transition:opacity 0.2s;
+  position:relative;
+}
+/*タスクの上の線*/
+.task-row.drop-before::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:3px;
+  background:aqua;
+  border-radius:3px;
+  box-shadow:0 0 12px aqua;
+  pointer-events:none;
+}
+/*タスクの一番下の線*/
+.task-row.drop-after::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  height:3px;
+  background:aqua;
+  border-radius:3px;
+  box-shadow:0 0 12px aqua;
+  pointer-events:none;
+}
+/*上のドラッグエリア*/
+.top-drop-zone{
+  height:60px;
+}
+/*下のドラッグエリア*/
+.bottom-drop-zone{
+  height:300px;
+}
+/*ドラッグ中暗い*/
+.task-row.drag-dimmed{
+  opacity:0.3;
+}
+/*タスク*/
+.task-row button:first-child{
+  flex:1;
+  text-align:left;
+  font-size:16px;
+  padding:12px;
+  border-radius:8px;
+}
+
+/*ドラッグ６点*/
+.drag-handle{
+  color:#94a3b8;
+  font-size:24px;
+  cursor:grab;
+  user-select:none;
+  padding:4px 8px;
+}
+.drag-handle:hover{
+  color:aqua;
+}
+.drag-handle:active{
+  cursor:grabbing;
+}
+/*挿入位置*/
+.drop-zone{
+  height:12px;
+  margin:2px 0;
+  border-radius:6px;
+  transition:0.15s;
+}
+.drop-zone.drop-active{
+  height:20px;
+  background:rgba(168,85,247,0.12);
+  position:relative;
+}
+.drop-zone.drop-active::after{
+  content:"";
+  position:absolute;
+  left:8px;
+  right:8px;
+  top:50%;
+  height:4px;
+  transform:translateY(-50%);
+  border-radius:4px;
+  background:aqua;
+  box-shadow:0 0 12px aqua;
+}
+/*編集と削除共通*/
+.task-action-button{
+  background-color: var(--bg);
+  cursor:pointer;
+  box-shadow:none;
+}
+
+/*編集*/
+.edit-button{
+  color:white;
+  border:1px solid white;
+  border-radius:10px;
+  font-size:12px;
+}
+
+/*削除*/
+.delete-button{
+  font-size:16px;
+  color:red;
+  border:1px solid red;
+  border-radius:20px;
+}
+
+
+/*重ねるスクリーン*/
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  background-color: rgba(0, 0, 0, 0.6);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+}
+
+
+/*編集画面入力欄*/
+.edit-modal input{
+  background-color: #101827;
+  color:white;
+  width:100%;
+  height:35px;
+  box-sizing:border-box;
+  border-radius:8px;
+}
+/*編集画面難易度と追加*/
+.edit-bottom{
+  display:flex;
+  gap:10px;
+  height:30px;
+  margin-top:10px;
+}
+/*編集画面難易度*/
+.edit-bottom select{
+  background-color: #101827;
+  color:white;
+  border-radius:8px;
+  border:#101827;
+  flex:1;
+}
+/*編集画面追加*/
+.edit-bottom button{
+  background-color:aqua;
+  width:70px;
+  border-radius:20px;
+  color:black;
+}
+/*編集画面キャンセル*/
+.cancel{
+  background-color:#101827;
+  width:90px;
+  border-radius:8px;
+  color:white;
+  margin-top:10px;
+}

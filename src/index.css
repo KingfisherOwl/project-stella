@@ -1,0 +1,29 @@
+:root {
+  --bg: #101827;
+  --text: #f3f4f6;
+  --accent: #a855f7;
+
+  font-family: system-ui, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+button{
+  box-shadow:2px 2px 2px 2px #89c3eb;
+}
+button:hover{
+  filter:brightness(1.1);
+  transform:scale(1.01);
+  cursor:pointer;
+}
+button:active{
+  transform:scale(0.95);
+}
